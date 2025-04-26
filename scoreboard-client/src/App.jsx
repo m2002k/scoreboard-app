@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import './App.css';
 import GameCard from './components/GameCard';
+import Scoreboard from './components/Scoreboard';
 
 function App() {
   const [gameData, setGameData] = useState(null);
@@ -39,6 +40,7 @@ function App() {
       <header className="app-header">
         <h1>NBA Live Scoreboard</h1>
       </header>
+      <Scoreboard />
       <main>
         {gameData && <GameCard game={gameData} />}
       </main>

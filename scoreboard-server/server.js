@@ -8,43 +8,115 @@ const PORT = process.env.PORT || 4000;
 app.use(cors());
 app.use(express.json());
 
-// Game simulation data
-let gameData = {
-  homeTeam: {
-    city: "Los Angeles",
-    name: "Lakers",
-    abbreviation: "LAL",
-    wins: 51,
-    losses: 31,
-    score: 52,
-    stats: {
-      fgPercentage: "36.2%",
-      threePointMade: 4,
-      threePointAttempts: 28,
-      rebounds: 35
-    }
+// Games simulation data
+let games = [
+  {
+    id: 1,
+    homeTeam: {
+      city: "Los Angeles",
+      name: "Lakers",
+      abbreviation: "LAL",
+      wins: 51,
+      losses: 31,
+      score: 52,
+      stats: {
+        fgPercentage: "36.2%",
+        threePointMade: 4,
+        threePointAttempts: 28,
+        rebounds: 35
+      }
+    },
+    awayTeam: {
+      city: "Boston",
+      name: "Celtics",
+      abbreviation: "BOS",
+      wins: 56,
+      losses: 26,
+      score: 69,
+      stats: {
+        fgPercentage: "44.8%",
+        threePointMade: 14,
+        threePointAttempts: 34,
+        rebounds: 32
+      }
+    },
+    period: 3,
+    timeRemaining: "6:42",
+    gameStatus: "live"
   },
-  awayTeam: {
-    city: "Boston",
-    name: "Celtics",
-    abbreviation: "BOS",
-    wins: 56,
-    losses: 26,
-    score: 69,
-    stats: {
-      fgPercentage: "44.8%",
-      threePointMade: 14,
-      threePointAttempts: 34,
-      rebounds: 32
-    }
+  {
+    id: 2,
+    homeTeam: {
+      city: "Miami",
+      name: "Heat",
+      abbreviation: "MIA",
+      wins: 45,
+      losses: 37,
+      score: 48,
+      stats: {
+        fgPercentage: "40.2%",
+        threePointMade: 6,
+        threePointAttempts: 20,
+        rebounds: 30
+      }
+    },
+    awayTeam: {
+      city: "New York",
+      name: "Knicks",
+      abbreviation: "NYK",
+      wins: 47,
+      losses: 35,
+      score: 55,
+      stats: {
+        fgPercentage: "42.7%",
+        threePointMade: 8,
+        threePointAttempts: 24,
+        rebounds: 28
+      }
+    },
+    period: 2,
+    timeRemaining: "8:12",
+    gameStatus: "live"
   },
-  period: 3,
-  timeRemaining: "6:42",
-  gameStatus: "live" // can be 'scheduled', 'live', 'halftime', 'final'
-};
+  {
+    id: 3,
+    homeTeam: {
+      city: "Golden State",
+      name: "Warriors",
+      abbreviation: "GSW",
+      wins: 50,
+      losses: 32,
+      score: 60,
+      stats: {
+        fgPercentage: "45.1%",
+        threePointMade: 10,
+        threePointAttempts: 25,
+        rebounds: 38
+      }
+    },
+    awayTeam: {
+      city: "Dallas",
+      name: "Mavericks",
+      abbreviation: "DAL",
+      wins: 48,
+      losses: 34,
+      score: 58,
+      stats: {
+        fgPercentage: "43.3%",
+        threePointMade: 9,
+        threePointAttempts: 26,
+        rebounds: 34
+      }
+    },
+    period: 3,
+    timeRemaining: "7:23",
+    gameStatus: "live"
+  }
+];
 
 // Function to randomly update the score
 function simulateGameProgress() {
+  games.forEach(gameData => {
   if (gameData.gameStatus !== 'live') return;
   
   // Random point scored (0, 1, 2 or 3 points)
@@ -108,6 +180,7 @@ function simulateGameProgress() {
   } else {
     gameData.timeRemaining = `${newMinutes}:${newSeconds.toString().padStart(2, '0')}`;
   }
+});
 }
 
 // Simulate game progress every 3 seconds
