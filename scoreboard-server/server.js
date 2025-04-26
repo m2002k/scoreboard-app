@@ -189,7 +189,7 @@ setInterval(simulateGameProgress, 3000);
 // API endpoint to get current game data
 
 app.get('/api/game', (req, res) => {
-  res.json(gameData);
+  res.json(games);
 });
 
 app.get('/api/health', (req, res) => {

@@ -1,22 +1,21 @@
 import { useState, useEffect } from 'react';
 import './App.css';
 import GameCard from './components/GameCard';
-import Scoreboard from './components/Scoreboard';
 
 function App() {
-  const [gameData, setGameData] = useState(null);
+  const [games, setGames] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchGameData = async () => {
+    const fetchGames = async () => {
       try {
         const response = await fetch('http://localhost:4000/api/game');
         if (!response.ok) {
           throw new Error('Failed to fetch game data');
         }
         const data = await response.json();
-        setGameData(data);
+        setGames(data);
         setLoading(false);
       } catch (err) {
         setError(err.message);
@@ -24,11 +23,8 @@ function App() {
       }
     };
 
-    fetchGameData();
-
-    // Set up polling every 3 seconds
-    const interval = setInterval(fetchGameData, 3000);
-
+    fetchGames();
+    const interval = setInterval(fetchGames, 3000);
     return () => clearInterval(interval);
   }, []);
 
@@ -40,8 +36,13 @@ function App() {
       <header className="app-header">
         <h1>NBA Live Scoreboard</h1>
       </header>
+
       <main>
-        {gameData && <GameCard game={gameData} />}
+        <div className="game-list" style={{ display: 'flex', gap: '20px' }}>
+          {games.map((game) => (
+            <GameCard key={game.id} game={game} />
+          ))}
+        </div>
       </main>
     </div>
   );

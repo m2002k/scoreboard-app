@@ -1,5 +1,5 @@
 .game-card {
-    background-color: white;
+    background-color: rgb(41, 41, 41);
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
@@ -8,7 +8,7 @@
 }
 
 .game-status {
-    background-color: #17408B;
+    background-color: #305fb6;
     color: white;
     padding: 8px 16px;
     font-size: 0.9rem;
@@ -36,14 +36,14 @@
 .team-logo {
     width: 40px;
     height: 40px;
-    background-color: #f0f0f0;
+    background-color: #242424;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: bold;
     margin-right: 12px;
-    color: #17408B;
+    color: #377dff;
 }
 
 .team-name {
@@ -75,7 +75,7 @@
 }
 
 .game-stats {
-    background-color: #f8f8f8;
+    background-color: #1f1f1f;
     padding: 12px 16px;
     border-top: 1px solid #e0e0e0;
 }
