@@ -40,7 +40,6 @@ function App() {
       <header className="app-header">
         <h1>NBA Live Scoreboard</h1>
       </header>
-      <Scoreboard />
       <main>
         {gameData && <GameCard game={gameData} />}
       </main>
