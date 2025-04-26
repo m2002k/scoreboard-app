@@ -56,7 +56,7 @@ function GameCard({ game }) {
                 </div>
             </div>
 
-            {game.gameStatus === 'live' && (
+            {(game.gameStatus === 'live' || game.gameStatus === 'final') && (
                 <div className="game-stats">
                     <div className="stat-row">
                         <div className="stat-label">FG%</div>
